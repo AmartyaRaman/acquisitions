@@ -105,4 +105,4 @@ export const signout = async (req, res, next) => {
     logger.error('Sign-out error', e);
     next(e);
   }
-}
+};
