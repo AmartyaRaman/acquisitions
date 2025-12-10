@@ -1,4 +1,6 @@
 node_modules/
 .env
+.env.development
+.env.production
 drizzle/meta
-logs/
+logs/.neon_local/

@@ -9,17 +9,18 @@ const aj = arcjet({
     shield({ mode: 'LIVE' }),
     // Create a bot detection rule
     detectBot({
-      mode: 'LIVE', // Blocks requests. Use "DRY_RUN" to log only
+      mode: process.env.NODE_ENV === 'production' ? 'LIVE' : 'DRY_RUN', // Only block in production
       // Block all bots except the following
       allow: [
         'CATEGORY:SEARCH_ENGINE', // Google, Bing, etc
         'CATEGORY:PREVIEW', // Link previews e.g. Slack, Discord
+        'CATEGORY:API', // API clients like Postman, curl, etc
       ],
     }),
     slidingWindow({
       mode: 'LIVE',
-      interval: 2, // Refill every 10 seconds
-      max: 5, // Bucket capacity of 10 tokens
+      interval: 2, // Refill every 2 seconds
+      max: 5, // Bucket capacity of 5 tokens
     }),
   ],
 });
