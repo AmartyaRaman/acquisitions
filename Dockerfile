@@ -1,7 +1,7 @@
 # Multi-stage Dockerfile for Node.js acquisitions application
 
 # Base image with Node.js
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 # Set working directory
 WORKDIR /app
